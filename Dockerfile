@@ -31,7 +31,9 @@ RUN git clone https://github.com/universal-ctags/ctags.git && \
     make && \
     make install
 
-COPY .vimrc .tmux.conf .bashrc $home/
+COPY vimrc $home/.vimrc
+COPY tmux.conf $home/.tmux.conf
+COPY bashrc $home/.bashrc
 COPY vim $home/.vim/
 RUN chown -R $user $home && chgrp -R $user $home
 
