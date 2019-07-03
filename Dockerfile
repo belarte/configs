@@ -47,4 +47,4 @@ RUN git config --global user.name "Bruno Belarte" && \
     git config --global user.email "bruno.belarte@gmail.com" && \
     git config --global alias.st status && \
     git config --global alias.amend "commit --amend --no-edit" && \
-    git config --global alias.lg "log --oneline --all --decorate --graph --color --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(cyan)<%an>%C(reset)' --abbrev-commit"
+    git config --global alias.lg "log --oneline --decorate --graph --color --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(cyan)<%an>%C(reset)' --abbrev-commit"
