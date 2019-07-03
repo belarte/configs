@@ -20,6 +20,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips.git'
 Plugin 'Raimondi/delimitMate'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()            " required
