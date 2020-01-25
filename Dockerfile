@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     tmux git ripgrep \
     powerline fonts-powerline powerline-gitstatus \
     cmake build-essential \
-    cppcheck libgtest-dev \
+    cppcheck libgtest-dev libgmock-dev \
     python3-dev python3-venv python3-pip python3-pytest \
     htop wget autoconf automake pkg-config
 
