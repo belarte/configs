@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     powerline fonts-powerline powerline-gitstatus \
     cmake build-essential \
     cppcheck libgtest-dev \
-    python3-dev python3-venv python3-pip \
+    python3-dev python3-venv python3-pip python3-pytest \
     htop wget autoconf automake pkg-config
 
 ARG user=bruno
@@ -49,3 +49,5 @@ RUN git config --global user.name "Bruno Belarte" && \
     git config --global alias.st status && \
     git config --global alias.amend "commit --amend --no-edit" && \
     git config --global alias.lg "log --oneline --decorate --graph --color --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(cyan)<%an>%C(reset)' --abbrev-commit"
+
+RUN pip3 install websockets
