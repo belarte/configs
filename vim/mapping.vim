@@ -31,4 +31,5 @@ command GenerateCtags :! ctags -R --c++-kinds=+p --fields=+iaS --extras=+q .
 nmap <F8> :TagbarToggle<CR>
 
 " Find
+map <Leader>f :Files<CR>
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!tags" --glob "!build/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
