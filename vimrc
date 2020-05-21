@@ -1,4 +1,6 @@
 set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 
 source ~/.vim/plugins.vim
 source ~/.vim/mapping.vim
@@ -56,6 +58,19 @@ set fo=tcrqn      " See Help (complex)
 set ai            " autoindent
 set si            " smartindent
 set cindent       " do c-style identing
-set tabstop=3     " tab spacing
 set softtabstop=3 " 2 spaces when pressing <tab> unify
+set expandtab
 set shiftwidth=3  " unify
+
+autocmd FileType python call s:python_settings()
+autocmd FileType cpp call s:cpp_settings()
+
+function! s:python_settings()
+	set softtabstop=4
+	set shiftwidth=4
+endfunction
+
+function! s:cpp_settings()
+	set softtabstop=2
+	set shiftwidth=2
+endfunction
