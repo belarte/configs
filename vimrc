@@ -66,11 +66,19 @@ autocmd FileType python call s:python_settings()
 autocmd FileType cpp call s:cpp_settings()
 
 function! s:python_settings()
-	set softtabstop=4
-	set shiftwidth=4
+        set tabstop=4
+        set softtabstop=4
+        set shiftwidth=4
+        set textwidth=79
+        set expandtab
+        set autoindent
+        set fileformat=unix
 endfunction
 
 function! s:cpp_settings()
 	set softtabstop=2
 	set shiftwidth=2
 endfunction
+
+let python_highlight_all=1
+syntax on
