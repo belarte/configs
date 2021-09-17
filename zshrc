@@ -9,3 +9,13 @@ alias c='clear'
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
+export ZSH_THEME="Solarized"
+
+# Pwerline
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+source /Users/belarte/Library/Python/3.8/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+
+PATH="/Users/belarte/Library/Python/3.8/bin:$PATH"
+PATH="/usr/local/bin::$PATH"
