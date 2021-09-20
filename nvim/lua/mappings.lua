@@ -4,6 +4,7 @@ local map = vim.api.nvim_set_keymap
 -- Make <Space> leader key
 map('n', '<Space>', '', {})
 g.mapleader = ' '
+g.maplocalleader = ","
 
 options = { noremap = true }
 
@@ -31,5 +32,5 @@ map('n', '<C-W>L', '<C-W>K', options)
 map('n', '<C-W>K', '<C-W>J', options)
 map('n', '<C-W>J', '<C-W>H', options)
 
-map('n', '<Leader>o', ':Files<CR>', options)
-map('n', '<Leader>f', ':Rg<CR>', options)
+--map('n', '<Leader>o', ':Files<CR>', options)
+-- map('n', '<Leader>f', ':Rg<CR>', options)
