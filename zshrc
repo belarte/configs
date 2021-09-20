@@ -7,6 +7,8 @@ alias e='exit'
 alias m='make'
 alias c='clear'
 
+alias repl='clojure -Sdeps "{:deps {nrepl/nrepl {:mvn/version \"RELEASE\"} cider/cider-nrepl {:mvn/version \"RELEASE\"}}}" -M -m nrepl.cmdline --middleware "[\"cider.nrepl/cider-middleware\"]"'
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export ZSH_THEME="Solarized"
