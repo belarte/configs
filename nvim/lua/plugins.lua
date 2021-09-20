@@ -54,6 +54,12 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
+  ["neovim/nvim-lspconfig"] = {
+    event = buf_enter,
+    config = function()
+      require("lsp")
+    end,
+  },
 --  ["kyazdani42/nvim-web-devicons"] = {},
 --  ["Pocco81/Catppuccino.nvim"] = { -- colorscheme
 --    after = "packer.nvim",
@@ -92,12 +98,6 @@ local plugins = {
 --          { name = "path" },
 --        },
 --      })
---    end,
---  },
---  ["neovim/nvim-lspconfig"] = {
---    event = buf_enter,
---    config = function()
---      require("lsp")
 --    end,
 --  },
 --  ["lewis6991/gitsigns.nvim"] = {
