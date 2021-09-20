@@ -26,6 +26,11 @@ local normal_mappings = {
    ['<C-W>L'] = '<C-W>K',
    ['<C-W>K'] = '<C-W>J',
    ['<C-W>J'] = '<C-W>H',
+
+   -- Telescope
+   ["<Leader>f"] = ":Telescope find_files<CR>",
+   ["<Leader>g"] = ":Telescope live_grep<CR>",
+   ["<Leader>b"] = ":Telescope buffers<CR>",
 }
 
 for mapping, action in pairs(normal_mappings) do
