@@ -8,29 +8,41 @@ g.maplocalleader = ","
 
 options = { noremap = true }
 
--- Move in normal mode
-map('n', ';', 'l', options)
-map('n', 'l', 'k', options)
-map('n', 'k', 'j', options)
-map('n', 'j', 'h', options)
+local normal_mappings = {
+   -- Move in normal mode
+   [';'] = 'l',
+   ['l'] = 'k',
+   ['k'] = 'j',
+   ['j'] = 'h',
 
--- Move in visual mode
-map('v', ';', 'l', options)
-map('v', 'l', 'k', options)
-map('v', 'k', 'j', options)
-map('v', 'j', 'h', options)
+   -- Move between tabs
+   ['<C-W>;'] = '<C-W>l',
+   ['<C-W>l'] = '<C-W>k',
+   ['<C-W>k'] = '<C-W>j',
+   ['<C-W>j'] = '<C-W>h',
 
--- Move between tabs
-map('n', '<C-W>;', '<C-W>l', options)
-map('n', '<C-W>l', '<C-W>k', options)
-map('n', '<C-W>k', '<C-W>j', options)
-map('n', '<C-W>j', '<C-W>h', options)
+   -- Reorganise tabs
+   ['<C-W>:'] = '<C-W>L',
+   ['<C-W>L'] = '<C-W>K',
+   ['<C-W>K'] = '<C-W>J',
+   ['<C-W>J'] = '<C-W>H',
+}
 
--- Reorganise tabs
-map('n', '<C-W>:', '<C-W>L', options)
-map('n', '<C-W>L', '<C-W>K', options)
-map('n', '<C-W>K', '<C-W>J', options)
-map('n', '<C-W>J', '<C-W>H', options)
+for mapping, action in pairs(normal_mappings) do
+   vim.api.nvim_set_keymap("n", mapping, action, { noremap = true, silent = true })
+end
+
+local visual_mappings = {
+   -- Move in visual mode
+   [';'] = 'l',
+   ['l'] = 'k',
+   ['k'] = 'j',
+   ['j'] = 'h',
+}
+
+for mapping, action in pairs(normal_mappings) do
+   vim.api.nvim_set_keymap("v", mapping, action, { noremap = true, silent = true })
+end
 
 --map('n', '<Leader>o', ':Files<CR>', options)
 -- map('n', '<Leader>f', ':Rg<CR>', options)
