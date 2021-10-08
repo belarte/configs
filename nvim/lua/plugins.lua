@@ -22,6 +22,11 @@ local plugins = {
   ['airblade/vim-gitgutter'] = {},
   ['vimwiki/vimwiki'] = {},
   ['ntpeters/vim-better-whitespace'] = {},
+  ['lewis6991/spellsitter.nvim'] = {
+    config = function()
+      require('spellsitter').setup()
+    end,
+  },
   ["Olical/conjure"] = {
     ft = "clojure",
   },
