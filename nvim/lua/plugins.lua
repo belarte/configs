@@ -44,6 +44,7 @@ local plugins = {
       require("treesitter")
     end,
   },
+  ["nvim-treesitter/nvim-treesitter-textobjects"] = {},
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
     requires = {
