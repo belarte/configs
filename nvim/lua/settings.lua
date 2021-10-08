@@ -12,11 +12,14 @@ opt.showmatch = true          -- highlight matching parenthesis
 opt.colorcolumn = '120'       -- line length marker at 120 columns
 opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
+opt.splitright = true
+opt.splitbelow = true
 
 -----------------------------------------------------------
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
+opt.background = 'dark'
 --cmd("autocmd Filetype * colorscheme catppuccino")
 --cmd("autocmd Filetype vimwiki colorscheme desert")
 
