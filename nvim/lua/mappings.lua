@@ -31,6 +31,10 @@ local normal_mappings = {
    ["<Leader>f"] = ":Telescope find_files<CR>",
    ["<Leader>g"] = ":Telescope live_grep<CR>",
    ["<Leader>b"] = ":Telescope buffers<CR>",
+
+   -- LSP
+   ["<Leader>ca"] = ":lua vim.lsp.buf.code_action()<CR>",
+   ["gd"] = ":lua vim.lsp.buf.definition()<CR>",
 }
 
 for mapping, action in pairs(normal_mappings) do
@@ -45,9 +49,6 @@ local visual_mappings = {
    ['j'] = 'h',
 }
 
-for mapping, action in pairs(normal_mappings) do
+for mapping, action in pairs(visual_mappings) do
    vim.api.nvim_set_keymap("v", mapping, action, { noremap = true, silent = true })
 end
-
---map('n', '<Leader>o', ':Files<CR>', options)
--- map('n', '<Leader>f', ':Rg<CR>', options)
