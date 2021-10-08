@@ -9,7 +9,7 @@ local opt = vim.opt              -- global/buffer/windows-scoped options
 -----------------------------------------------------------
 opt.number = true             -- show line number
 opt.showmatch = true          -- highlight matching parenthesis
-opt.colorcolumn = '120'       -- line lenght marker at 80 columns
+opt.colorcolumn = '120'       -- line length marker at 120 columns
 opt.ignorecase = true         -- ignore case letters when search
 opt.smartcase = true          -- ignore lowercase for the whole pattern
 
@@ -17,6 +17,8 @@ opt.smartcase = true          -- ignore lowercase for the whole pattern
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
+--cmd("autocmd Filetype * colorscheme catppuccino")
+--cmd("autocmd Filetype vimwiki colorscheme desert")
 
 -----------------------------------------------------------
 -- Tabs, indent
@@ -30,3 +32,5 @@ opt.smartindent = true    -- autoindent new lines
 cmd[[au BufEnter * set fo-=c fo-=r fo-=o]]
 
 g.airline_powerline_fonts = 1
+g.better_whitespace_enabled = 1
+g.strip_whitespace_on_save = 1
