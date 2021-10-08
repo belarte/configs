@@ -34,6 +34,7 @@ opt.smartindent = true    -- autoindent new lines
 -- don't auto commenting new lines
 cmd[[au BufEnter * set fo-=c fo-=r fo-=o]]
 
+-- Plugins configuration
 g.airline_powerline_fonts = 1
 g.better_whitespace_enabled = 1
 g.strip_whitespace_on_save = 1
