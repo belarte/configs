@@ -14,22 +14,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.api.nvim_command("packadd packer.nvim")
 end
 
--- Add packages
--- for package info see: init.lua (Lua modules)
-require 'paq' {
-  'savq/paq-nvim';  -- let paq manage itself
-
-}
-
 local plugins = {
   ["wbthomason/packer.nvim"] = {},
   ['jremmen/vim-ripgrep'] = {},
   ['vim-airline/vim-airline'] = {},
---  ['junegunn/fzf'] = {},
---  ['junegunn/fzf.vim'] = {},
   ['tpope/vim-fugitive'] = {},
   ['airblade/vim-gitgutter'] = {},
   ['vimwiki/vimwiki'] = {},
+  ['ntpeters/vim-better-whitespace'] = {},
   ["Olical/conjure"] = {
     ft = "clojure",
   },
@@ -60,13 +52,43 @@ local plugins = {
       require("lsp")
     end,
   },
---  ["kyazdani42/nvim-web-devicons"] = {},
---  ["Pocco81/Catppuccino.nvim"] = { -- colorscheme
---    after = "packer.nvim",
---    config = function()
---      require("colorscheme")
---    end,
---  },
+  ["hrsh7th/nvim-cmp"] = {
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-path",
+    },
+    config = function()
+      require("cmp").setup({
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "buffer" },
+          { name = "nvim_lua" },
+          { name = "path" },
+        },
+      })
+    end,
+  },
+  ["p00f/nvim-ts-rainbow"] = {
+    event = buf_read,
+    requires = "neovim/nvim-lspconfig",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+        },
+      })
+    end,
+  },
+  ["kyazdani42/nvim-web-devicons"] = {},
+  ["Pocco81/Catppuccino.nvim"] = { -- colorscheme
+    after = "packer.nvim",
+    config = function()
+      require("colorscheme")
+    end,
+  },
 --  ["kyazdani42/nvim-tree.lua"] = {
 --    cmd = "NvimTreeToggle",
 --  },
@@ -80,24 +102,6 @@ local plugins = {
 --    after = "nvim-bufferline.lua",
 --    config = function()
 --      require("statusline")
---    end,
---  },
---  ["hrsh7th/nvim-cmp"] = {
---    requires = {
---      "hrsh7th/cmp-buffer",
---      "hrsh7th/cmp-nvim-lsp",
---      "hrsh7th/cmp-nvim-lua",
---      "hrsh7th/cmp-path",
---    },
---    config = function()
---      require("cmp").setup({
---        sources = {
---          { name = "nvim_lsp" },
---          { name = "buffer" },
---          { name = "nvim_lua" },
---          { name = "path" },
---        },
---      })
 --    end,
 --  },
 --  ["lewis6991/gitsigns.nvim"] = {
@@ -117,18 +121,6 @@ local plugins = {
 --    event = "VimEnter",
 --    config = function()
 --      require("which-key").setup({})
---    end,
---  },
---  ["p00f/nvim-ts-rainbow"] = {
---    event = buf_read,
---    requires = "neovim/nvim-lspconfig",
---    config = function()
---      require("nvim-treesitter.configs").setup({
---        rainbow = {
---          enable = true,
---          extended_mode = true,
---        },
---      })
 --    end,
 --  },
 --  ["mfussenegger/nvim-lint"] = {
