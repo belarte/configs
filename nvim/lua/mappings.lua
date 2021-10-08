@@ -34,7 +34,7 @@ local normal_mappings = {
 
    -- LSP
    ["<Leader>ca"] = ":lua vim.lsp.buf.code_action()<CR>",
-   ["gd"] = ":lua vim.lsp.buf.definition()<CR>",
+   --["gd"] = ":lua vim.lsp.buf.definition()<CR>",
 
    -- Misc
    ["<Leader><ESC>"] = ":nohl<CR>",
