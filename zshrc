@@ -21,3 +21,5 @@ source /Users/belarte/Library/Python/3.8/lib/python/site-packages/powerline/bind
 
 PATH="/Users/belarte/Library/Python/3.8/bin:$PATH"
 PATH="/usr/local/bin::$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
