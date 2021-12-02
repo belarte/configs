@@ -90,7 +90,7 @@ local plugins = {
     end,
   },
   ["kyazdani42/nvim-web-devicons"] = {},
-  ["Pocco81/Catppuccino.nvim"] = { -- colorscheme
+  ["folke/tokyonight.nvim"] = { -- colorscheme
     after = "packer.nvim",
     config = function()
       require("colorscheme")
