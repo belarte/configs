@@ -1,7 +1,7 @@
 PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%F{240}%~%f%b %# '
 
 alias ll='ls -lF'
-alias la='ls -A'
+alias la='ls -lFA'
 alias l='ls -CF'
 alias e='exit'
 alias m='make'
