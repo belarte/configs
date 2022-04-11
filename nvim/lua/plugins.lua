@@ -17,7 +17,9 @@ end
 local plugins = {
   ["wbthomason/packer.nvim"] = {},
   ['jremmen/vim-ripgrep'] = {},
-  ['vim-airline/vim-airline'] = {},
+  ['nvim-lualine/lualine.nvim'] = {
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  },
   ['tpope/vim-fugitive'] = {},
   ['airblade/vim-gitgutter'] = {},
   ['vimwiki/vimwiki'] = {},
@@ -39,7 +41,6 @@ local plugins = {
   },
   ["nvim-treesitter/nvim-treesitter"] = {
     run = ":TSUpdate",
-    branch = "0.5-compat",
     config = function()
       require("treesitter")
     end,
