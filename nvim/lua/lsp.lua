@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 
 lsps = {
   "clojure_lsp", -- brew install clojure-lsp/brew/clojure-lsp-native
+  "tsserver",    -- npm install -g typescript-language-server typescript
 }
 
 
