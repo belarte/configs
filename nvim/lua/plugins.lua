@@ -50,8 +50,8 @@ local plugins = {
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
     requires = {
-      "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim",
+        {"nvim-lua/popup.nvim"},
+        {"nvim-lua/plenary.nvim"},
     },
   },
   ["neovim/nvim-lspconfig"] = {
