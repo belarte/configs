@@ -39,6 +39,10 @@ local plugins = {
     ft = "clojure",
     run = "cargo build --release",
   },
+  ["prettier/vim-prettier"] = {
+    run = 'yarn install',
+    ft = {'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'vue', 'html'}
+  },
   ["nvim-treesitter/nvim-treesitter"] = {
     run = ":TSUpdate",
     config = function()
