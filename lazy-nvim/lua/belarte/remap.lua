@@ -21,5 +21,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "]q", ":cn<CR>")
 vim.keymap.set("n", "[q", ":cp<CR>")
 
-vim.keymap.set("n", "<leader>mm", ":make<CR>")
-vim.keymap.set("n", "<leader>mt", ":make test<CR>")
+vim.keymap.set("n", "<leader>mm", ":wa<CR>:make<CR>")
+vim.keymap.set("n", "<leader>mt", ":wa<CR>:make test<CR>")
+vim.keymap.set("n", "<leader>mr", ":wa<CR>:make run<CR>")
