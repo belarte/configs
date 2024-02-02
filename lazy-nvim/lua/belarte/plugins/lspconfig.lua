@@ -77,6 +77,11 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig["templ"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
         lspconfig["jdtls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
