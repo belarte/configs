@@ -61,12 +61,6 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        -- configure typescript server with plugin
-        lspconfig["tsserver"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-
         lspconfig["clojure_lsp"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
