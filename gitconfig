@@ -1,0 +1,16 @@
+[user]
+	name = Bruno Belarte
+[alias]
+	st = status
+	amend = commit --amend --no-edit
+	lg = log --oneline --decorate --graph --color --pretty=format:'%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(cyan)<%an>%C(reset)' --abbrev-commit
+    sh = show --ext-diff
+[pull]
+	rebase = true
+[push]
+	autoSetupRemote = true
+[diff]
+    external = difft --background=light --color=always
+[init]
+	defaultBranch = main
+	templatedir = /Users/belarte/.git-template
