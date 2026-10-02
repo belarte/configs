@@ -5,7 +5,6 @@ return {
         "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-        local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         local opts = { noremap = true, silent = true }
@@ -61,38 +60,43 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        lspconfig["ts_ls"].setup({
+        vim.lsp.config("ts_ls", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("ts_ls")
 
-        lspconfig["clojure_lsp"].setup({
+        vim.lsp.config("clojure_lsp", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("clojure_lsp")
 
-        lspconfig["gopls"].setup({
+        vim.lsp.config("gopls", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("gopls")
 
-        lspconfig["templ"].setup({
+        vim.lsp.config("templ", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("templ")
 
-        lspconfig["rust_analyzer"].setup({
+        vim.lsp.config("rust_analyzer", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("rust_analyzer")
 
-        lspconfig["jdtls"].setup({
+        vim.lsp.config("jdtls", {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+        vim.lsp.enable("jdtls")
 
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+        vim.lsp.config("lua_ls", {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = { -- custom settings for lua
@@ -111,5 +115,6 @@ return {
                 },
             },
         })
+        vim.lsp.enable("lua_ls")
     end,
 }
