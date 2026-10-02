@@ -1,37 +1,45 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+
     config = function()
-        -- import nvim-treesitter plugin
-        local treesitter = require("nvim-treesitter.configs")
-
-        -- configure treesitter
-        treesitter.setup({ -- enable syntax highlighting
-            auto_install = true,
-
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
+        vim.filetype.add({
+            extension = {
+                templ = "templ",
             },
+        })
 
-            -- ensure these language parsers are installed
-            ensure_installed = {
+        require("nvim-treesitter").install({
+            "json",
+            "javascript",
+            "typescript",
+            "bash",
+            "lua",
+            "templ",
+            "go",
+            "rust",
+            "clojure",
+            "java",
+        })
+
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = {
                 "json",
                 "javascript",
                 "typescript",
                 "bash",
                 "lua",
+                "templ",
+                "go",
+                "rust",
+                "clojure",
+                "java",
             },
-
-            vim.filetype.add({
-                extension = {
-                    templ = "templ",
-                },
-            })
+            callback = function()
+                vim.treesitter.start()
+            end,
         })
     end,
 }

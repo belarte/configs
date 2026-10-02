@@ -1,50 +1,81 @@
 return {
   "nvim-treesitter/nvim-treesitter-textobjects",
-  lazy = true,
+  branch = "main",
+  event = "VeryLazy",
+
   config = function()
-    require("nvim-treesitter.configs").setup({
-      textobjects = {
-        select = {
-          enable = true,
+    local select = require("nvim-treesitter-textobjects.select")
+    local move = require("nvim-treesitter-textobjects.move")
+    local ts_repeat_move = require("nvim-treesitter-textobjects.repeatable_move")
 
-          -- Automatically jump forward to textobj, similar to targets.vim
-          lookahead = true,
+    -- ============================================================
+    -- Text object selection
+    -- ============================================================
 
-          keymaps = {
-            ["af"] = { query = "@function.outer", desc = "Select outer part of a method/function definition" },
-            ["if"] = { query = "@function.inner", desc = "Select inner part of a method/function definition" },
+    vim.keymap.set({ "x", "o" }, "af", function()
+      select.select_textobject("@function.outer", "textobjects")
+    end, { desc = "Select outer part of a function" })
 
-            ["ac"] = { query = "@class.outer", desc = "Select outer part of a class" },
-            ["ic"] = { query = "@class.inner", desc = "Select inner part of a class" },
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            ["]f"] = { query = "@function.outer", desc = "Next method/function def start" },
-            ["]c"] = { query = "@class.outer", desc = "Next class start" },
-            ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
-          },
-          goto_previous_start = {
-            ["[f"] = { query = "@function.outer", desc = "Prev method/function def start" },
-            ["[c"] = { query = "@class.outer", desc = "Prev class start" },
-            ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
-          },
-        },
-      },
-    })
+    vim.keymap.set({ "x", "o" }, "if", function()
+      select.select_textobject("@function.inner", "textobjects")
+    end, { desc = "Select inner part of a function" })
 
-    local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
+    vim.keymap.set({ "x", "o" }, "ac", function()
+      select.select_textobject("@class.outer", "textobjects")
+    end, { desc = "Select outer part of a class" })
 
-    -- vim way: ; goes to the direction you were moving.
-    vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-    vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+    vim.keymap.set({ "x", "o" }, "ic", function()
+      select.select_textobject("@class.inner", "textobjects")
+    end, { desc = "Select inner part of a class" })
 
-    -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-    vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
-    vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
-    vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
-    vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+    -- ============================================================
+    -- Text object movement
+    -- ============================================================
+
+    vim.keymap.set({ "n", "x", "o" }, "]f", function()
+      move.goto_next_start("@function.outer", "textobjects")
+    end, { desc = "Next function start" })
+
+    vim.keymap.set({ "n", "x", "o" }, "[f", function()
+      move.goto_previous_start("@function.outer", "textobjects")
+    end, { desc = "Previous function start" })
+
+    vim.keymap.set({ "n", "x", "o" }, "]c", function()
+      move.goto_next_start("@class.outer", "textobjects")
+    end, { desc = "Next class start" })
+
+    vim.keymap.set({ "n", "x", "o" }, "[c", function()
+      move.goto_previous_start("@class.outer", "textobjects")
+    end, { desc = "Previous class start" })
+
+    vim.keymap.set({ "n", "x", "o" }, "]l", function()
+      move.goto_next_start("@loop.outer", "textobjects")
+    end, { desc = "Next loop start" })
+
+    vim.keymap.set({ "n", "x", "o" }, "[l", function()
+      move.goto_previous_start("@loop.outer", "textobjects")
+    end, { desc = "Previous loop start" })
+
+    -- ============================================================
+    -- Repeat textobject movement with ; and ,
+    -- ============================================================
+
+    vim.keymap.set(
+      { "n", "x", "o" },
+      ";",
+      ts_repeat_move.repeat_last_move
+    )
+
+    vim.keymap.set(
+      { "n", "x", "o" },
+      ",",
+      ts_repeat_move.repeat_last_move_opposite
+    )
+
+    -- Make builtin f, F, t, T repeatable with ; and ,
+    vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
+    vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
+    vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
+    vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
   end,
 }
