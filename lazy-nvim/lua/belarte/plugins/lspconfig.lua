@@ -78,6 +78,27 @@ return {
         })
         vim.lsp.enable("gopls")
 
+        -- organize imports (goimports) and gofmt on save
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.go",
+            group = vim.api.nvim_create_augroup("GoFormatOnSave", { clear = true }),
+            callback = function(args)
+                local params = vim.lsp.util.make_range_params(0, "utf-16")
+                params.context = { only = { "source.organizeImports" } }
+                local result = vim.lsp.buf_request_sync(args.buf, "textDocument/codeAction", params, 3000)
+                for client_id, res in pairs(result or {}) do
+                    for _, action in pairs(res.result or {}) do
+                        if action.edit then
+                            local client = vim.lsp.get_client_by_id(client_id)
+                            vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+                        end
+                    end
+                end
+
+                vim.lsp.buf.format({ bufnr = args.buf, async = false })
+            end,
+        })
+
         vim.lsp.config("templ", {
             capabilities = capabilities,
             on_attach = on_attach,
