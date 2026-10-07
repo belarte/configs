@@ -17,6 +17,19 @@ return {
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
 
+        -- disabled plugins are absent from lazy's plugin table
+        local copilot_enabled = require("lazy.core.config").plugins["copilot-cmp"] ~= nil
+
+        local sources = {
+            { name = "nvim_lsp" },
+            { name = "luasnip" }, -- snippets
+            { name = "buffer" },  -- text within current buffer
+            { name = "path" },    -- file system paths
+        }
+        if copilot_enabled then
+            table.insert(sources, 1, { name = "copilot" })
+        end
+
         cmp.setup({
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
@@ -37,13 +50,7 @@ return {
                 ['<S-Tab>'] = nil,
             }),
             -- sources for autocompletion
-            sources = cmp.config.sources({
-                { name = "copilot" },
-                { name = "nvim_lsp" },
-                { name = "luasnip" }, -- snippets
-                { name = "buffer" },  -- text within current buffer
-                { name = "path" },    -- file system paths
-            }),
+            sources = cmp.config.sources(sources),
             -- configure lspkind for vs-code like pictograms in completion menu
             formatting = {
                 format = lspkind.cmp_format({

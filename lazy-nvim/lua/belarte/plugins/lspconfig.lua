@@ -60,12 +60,6 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        vim.lsp.config("ts_ls", {
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-        vim.lsp.enable("ts_ls")
-
         vim.lsp.config("clojure_lsp", {
             capabilities = capabilities,
             on_attach = on_attach,
@@ -110,12 +104,6 @@ return {
             on_attach = on_attach,
         })
         vim.lsp.enable("rust_analyzer")
-
-        vim.lsp.config("jdtls", {
-            capabilities = capabilities,
-            on_attach = on_attach,
-        })
-        vim.lsp.enable("jdtls")
 
         vim.lsp.config("lua_ls", {
             capabilities = capabilities,

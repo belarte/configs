@@ -23,6 +23,8 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
+                "clojure_lsp",
+                "templ",
             },
         })
     end,
